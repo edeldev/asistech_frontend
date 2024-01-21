@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+/** HEADER */
+
+.header {
+    height: 80px;
+    position: relative;
+}
+
+.navigation {
+    height: 80px;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 1rem 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+}
+
+.navigation a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.navigation .home {
+    transition: all .5s ease;
+    position: relative;
+}
+
+.navigation .home::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #000000;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.5s ease;
+}
+
+.navigation .home:hover::before {
+    transform: scaleX(1);
+}
+
+.navigation .acerca {
+    border: 1px solid black;
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+    transition: all .5s ease;
+}
+
+.navigation .acerca:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.acerca.active {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+    .navigation {
+        padding: 1rem;
+    }
+}
+
+/** MAIN INICIO */
+.main__header {
+    background-color: #171717;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+    margin: 30px 0;
+}
+
+.forms__container {
+    padding: 2.5rem;
+    position: relative;
+}
+
+.forms__container::before,
+.forms__container.activo::before {
+    content: '';
+    position: absolute;
+    height: 40px;
+    width: 123px;
+    color: #ffffff;
+    top: -20px;
+    font-size: 12px;
+    text-align: center;
+    padding: 11px;
+    font-weight: bold;
+    backdrop-filter: blur(15px);
+}
+
+.forms__container::before {
+    background-color: #cf2323cb;
+    left: 0;
+    border-radius: 10px 10px 10px 0;
+    content: 'Área Alumnos';
+}
+
+.forms__container.activo::before {
+    background-color: #cf2323ba;
+    right: 0;
+    left: auto;
+    border-radius: 10px 10px 0 10px;
+    content: 'Área Maestros';
+}
+
+
+/*!CLASES */
+.input {
+    width: 100%;
+    border-radius: .5rem;
+    padding: .2rem .5rem;
+    background-color: #FFC9C9;
+}
+
+.input[type="text"]::placeholder,
+.input[type="password"]::placeholder {
+    color: #000000;
+    font-size: 12px;
+}
+
+.submit {
+    background-color: #E03131;
+    color: white;
+    box-shadow: 1px 3px 4px black;
+    transition: all .5s ease;
+    width: 100%;
+    border-radius: .5rem;
+    padding: .2rem .5rem;
+    border: none;
+}
+
+.submit:hover {
+    background-color:#e03131c8;
+}
+
+
+/** CONTAINER SALUDO */
+.container__saludo {
+    background-color: #E03131;
+    border-radius: 1.5rem 1rem 1rem 1.5rem;
+    padding: 2.5rem;
+}
+
+.container__saludo.activo {
+    border-radius: 1rem 1.5rem 1.5rem 1rem;
+}
+
+.container__saludo a {
+    border: 1px solid white;
+    padding: .2rem 0;
+    border-radius: .5rem;
+    text-decoration: none;
+    color: #FFFFFF;
+    transition: all .5s ease;
+}
+
+.container__saludo a:hover {
+    background-color: #ffffffc1;
+    color: #000000;
+}
+
+
+/** ALERTA */
+.alerta {
+    background-color: #aa4040;
+}
+
+@media (max-width: 1060px) {
+    .contenedor {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+    }
+
+    .forms__container, .container__saludo {
+        width: 100%!important;
+    }
+
+    .container__saludo {
+        border-radius: 1rem 1rem 1rem 1rem;
+    }
+
+    .container__saludo p {
+        font-size: 14px;
+    }
+
+    /*! CLASSLIST */
+    .forms__container.activo::before {
+        content: 'Área Maestros';
+        position: absolute;
+        height: 40px;
+        width: 123px;
+        background-color: #000000c3;
+        color: #ffffff;
+        top: -20px;
+        right: 0;
+        left: auto;
+        font-size: 12px;
+        text-align: center;
+        padding: 11px;
+        border-radius: 10px 10px 0 10px;
+        font-weight: bold;
+        backdrop-filter: blur(15px);
+    }
+
+    .container__saludo.activo {
+        border-radius: 1rem 1rem 1rem 1rem;
+    }
+
+}
+
+
+/** MAIN ACERCA DE */
+.main__acerca-de {
+    background-color: #000000;
+    min-height: calc(100vh - 80px);
+    padding: 20px 0;
+}
+
+
+/** FORMULARIO REGISTRAR */
+
+.forms__registrar {
+    position: relative;
+    background-color: #E03131;
+    min-height: calc(100vh - 80px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.forms__registrar .contenido {
+    background-color: #FFFFFF;
+    width: 50%;
+    border-radius: 1.5rem 1rem 1rem 1.5rem;
+    padding: 2.5rem;
+    position: relative;
+}
+
+
+.forms__registrar .contenido::before,
+.forms__registrar .contenido.activo::before {
+    content: 'Área Alumnos';
+    left: 0;
+    right: auto;
+    border-radius: 10px 10px 10px 0;
+}
+
+.forms__registrar .contenido.activo::before {
+    content: 'Área Maestros';
+    left: auto;
+    right: 0;
+    border-radius: 10px 10px 0 10px;
+}
+
+.forms__registrar .contenido::before,
+.forms__registrar .contenido.activo::before {
+    position: absolute;
+    height: 40px;
+    width: 140px;
+    background-color: #000000c3;
+    color: #ffffff;
+    top: 0;
+    font-size: 12px;
+    text-align: center;
+    padding: 11px;
+    font-weight: bold;
+    backdrop-filter: blur(15px);
+}
+
+.forms__registrar .contenido.no-activo::before {
+    content: 'Área Coordinación';
+    left: 0;
+    right: auto;
+    border-radius: 10px 10px 10px 0;
+}
+
+
+@media (max-width: 1000px) {
+    .forms__registrar .contenido {
+        width: 80%;
+    }
+
+    .forms__registrar form {
+        width: 90%!important;
+    }
+}

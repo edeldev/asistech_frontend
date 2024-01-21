@@ -1,0 +1,76 @@
+.logo {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  z-index: 1;
+}
+
+.menu {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  flex-basis: 0;
+  z-index: 1;
+}
+
+.menu p {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.5s ease;
+}
+
+.menu p:hover {
+  background-color: #ffffffbd;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.alumnos__main {
+  min-height: calc(100vh - 75px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image img {
+  width: 500px;
+  height: auto;
+}
+
+.alumnos__main p {
+  font-size: 50px;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+@media (max-width: 976px) {
+  .alumnos {
+    padding: 1rem 2rem;
+  }
+
+  .alumnos p {
+    font-size: 13px;
+  }
+
+  .alumnos .dropdown {
+    right: 30px;
+  }
+
+  .image img {
+    width: 330px;
+  }
+
+  .alumnos p:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .alumnos .dropdown {
+    padding: 1rem 2rem;
+  }
+}
