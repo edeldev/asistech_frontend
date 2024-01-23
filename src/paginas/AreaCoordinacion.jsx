@@ -11,7 +11,6 @@ const AreaCoordinacion = () => {
   const { asistenciaMaestros, cargando2, submitAsistenciaMaestro } =
     useMaestroAsistencia();
   const params = useParams();
-  console.log(asistenciaMaestros);
 
   useEffect(() => {
     socket = io(import.meta.env.VITE_BACKEND_URL);

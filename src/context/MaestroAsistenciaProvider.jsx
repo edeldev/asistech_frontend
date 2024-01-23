@@ -17,21 +17,7 @@ const MaestroAsistenciaProvider = ({ children }) => {
   useEffect(() => {
     const obtenerAsistencia = async () => {
       try {
-        const token = localStorage.getItem("token-maestro");
-
-        if (!token) {
-          setCargando2(false);
-          return;
-        }
-
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        const { data } = await clienteAxios("/asistencia", config);
+        const { data } = await clienteAxios("/asistencia");
         setAsistenciaMaestros(data);
       } catch (error) {
         setAsistenciaMaestros([]);
@@ -57,33 +43,7 @@ const MaestroAsistenciaProvider = ({ children }) => {
 
   const submitAsistencia = async (asistencia) => {
     try {
-      const token = localStorage.getItem("token-maestro");
-
-      if (!token) {
-        mostrarAlerta({
-          msg: "Debes iniciar sesión antes de registrar asistencia",
-          error: true,
-        });
-
-        setTimeout(() => {
-          mostrarAlerta({});
-          navigate("/");
-        }, 3000);
-        return;
-      }
-
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      const { data } = await clienteAxios.post(
-        "/asistencia",
-        asistencia,
-        config
-      );
+      const { data } = await clienteAxios.post("/asistencia", asistencia);
       mostrarAlerta({
         msg: "Asistencia tomada",
         error: false,
