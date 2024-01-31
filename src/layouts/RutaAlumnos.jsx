@@ -21,8 +21,7 @@ const RutaAlumnos = () => {
           <header className="content">
             <div className="maestros">
               <p className="logo fw-bold">
-                Bienvenido(a), {authAlumnos.nombre.split(" ")[0]}{" "}
-                {authAlumnos.nombre.split(" ")[1]}!
+                Bienvenido(a), {authAlumnos.nombre}!
               </p>
 
               <p>Área Alumnos</p>

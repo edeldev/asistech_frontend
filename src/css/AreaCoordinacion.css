@@ -1,147 +1,173 @@
 /** LOGIN COORDINACION */
 .main__coordinacion {
-    background-color: #E03131;
-    min-height: calc(100vh - 80px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #e03131;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contenedor__coordinacion {
-    width: 50%;
-    margin: 0 auto;
-    background-color: #FFFFFF;
-    border-radius: 1rem;
-    margin: 30px 0;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  margin: 30px 0;
 }
 
 @media (max-width: 800px) {
-    .contenedor__coordinacion {
-        width: 90%;
-    }
+  .contenedor__coordinacion {
+    width: 90%;
+  }
 }
-
 
 /** AREA COORDINACION */
 .content {
-    position: relative;
-    height: 75px;
+  position: relative;
+  height: 75px;
 }
 
 .coordinacion {
-    position: fixed;
-    height: 75px;
-    width: 100%;
-    z-index: 1;
-    background-color: #FA5252;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5rem;
+  position: fixed;
+  height: 75px;
+  width: 100%;
+  z-index: 1;
+  background-color: #fa5252;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5rem;
 }
 
 .coordinacion p {
-    margin: 0;
-    color: #FFFFFF;
+  margin: 0;
+  color: #ffffff;
 }
 
 .coordinacion p:nth-child(2) {
-    font-style: italic;
+  font-style: italic;
 }
 
 .coordinacion .dropdown {
-    position: absolute;
-    right: 75px;
-    top: 0;
-    padding: 1rem 5rem;
-    margin-top: 3.24rem;
-    background: #fa5252c7;
-    border-radius: 1rem;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 10px black;
-    z-index: 2;
+  position: absolute;
+  right: 75px;
+  top: 0;
+  padding: 1rem 5rem;
+  margin-top: 3.24rem;
+  background: #fa5252c7;
+  border-radius: 1rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px black;
+  z-index: 2;
 }
 
 .coordinacion .dropdown ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    text-align: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .coordinacion .dropdown ul li {
-    background-color: #FFFFFF;
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    transition: background-color .5s ease;
-    margin: 10px 0;
+  background-color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.5s ease;
+  margin: 10px 0;
 }
 
 .coordinacion .dropdown ul li:hover {
-    background-color: #ffffffbb;
-    cursor: pointer;
+  background-color: #ffffffbb;
+  cursor: pointer;
 }
 
 .logo {
-    display: flex;
-    flex-grow: 1;
-    flex-basis: 0;
-    z-index: 1;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  z-index: 1;
 }
 
 .menu {
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
-    flex-basis: 0;
-    z-index: 1;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  flex-basis: 0;
+  z-index: 1;
 }
 
 .menu p {
-    background-color: #FFFFFF;
-    color: #000000;
-    padding: .2rem 1rem;
-    border-radius: .5rem;
-    transition: background-color .5s ease;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.5s ease;
 }
 
 .menu p:hover {
-    background-color: #ffffffbd;
-    backdrop-filter: blur(10px);
-    cursor: pointer;
+  background-color: #ffffffbd;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 
 .coordinacion__main {
-    padding: 1rem 0;
-    width: 90%;
-    margin: 0 auto;
+  padding: 1rem 0;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .coordinacion__main p {
-    font-size: 16px;
-    margin-top: 1rem;
-    font-style: italic;
+  font-size: 16px;
+  margin-top: 1rem;
+  font-style: italic;
 }
 
 @media (max-width: 976px) {
-    .coordinacion {
-        padding: 1rem 2rem;
-    }
+  .coordinacion {
+    padding: 1rem 2rem;
+  }
 
-    .coordinacion p {
-        font-size: 13px;
-    }
+  .coordinacion p {
+    font-size: 13px;
+  }
 
-    .coordinacion .dropdown {
-        right: 30px;
-    }
+  .coordinacion .dropdown {
+    right: 30px;
+  }
 
-    .coordinacion p:nth-child(2) {
-        display: none;
-    }
+  .coordinacion p:nth-child(2) {
+    display: none;
+  }
 }
 @media (max-width: 768px) {
-    .coordinacion .dropdown {
-        padding: 1rem 2rem;
-    }
+  .coordinacion .dropdown {
+    padding: 1rem 2rem;
+  }
+}
+
+.excel-button {
+  padding: 5px 10px;
+  color: rgb(0, 0, 0);
+  background: rgb(168, 248, 208);
+  border: none;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  box-shadow: 0px 2px 8px rgb(93, 238, 166);
+}
+
+.excel-button:hover {
+  background: rgb(93, 238, 166);
+}
+
+.button-reporte {
+  width: 100%;
+  padding: 5px 0;
+  color: rgb(227, 242, 253);
+  background: rgb(100, 177, 239);
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.button-reporte:hover {
+  background-color: rgb(16, 144, 249);
 }

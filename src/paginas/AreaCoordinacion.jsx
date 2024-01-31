@@ -175,7 +175,9 @@ const AreaCoordinacion = () => {
       {Object.keys(asistenciasPorNombre).length > 0 ? (
         <>
           <div className="asistencia-filtro d-flex justify-content-between align-items-center mt-3 mb-5">
-            <button onClick={exportarAExcel}>Exportar Excel</button>
+            <button className="excel-button" onClick={exportarAExcel}>
+              Exportar a Excel
+            </button>
             <Filtro />
           </div>
           <h2 className="fw-bold">Docentes</h2>
@@ -188,7 +190,10 @@ const AreaCoordinacion = () => {
               >
                 {`${nombre}`}
               </h3>
-              <button onClick={() => generarReporte(nombre)}>
+              <button
+                onClick={() => generarReporte(nombre)}
+                className="button-reporte"
+              >
                 Generar Reporte
               </button>
 
