@@ -163,11 +163,11 @@
   width: 100%;
   padding: 5px 0;
   color: rgb(227, 242, 253);
-  background: rgb(100, 177, 239);
+  background: rgb(163, 163, 163);
   border: none;
   transition: all 0.5s ease;
 }
 
 .button-reporte:hover {
-  background-color: rgb(16, 144, 249);
+  background-color: rgb(108, 106, 106);
 }

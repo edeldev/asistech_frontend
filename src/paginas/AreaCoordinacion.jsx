@@ -57,14 +57,27 @@ const AreaCoordinacion = () => {
 
     // Agregar tabla
     const tableData = [
-      ["Nombre", "Horas"],
-      [nombre, contarHorasPorMaestro(nombre)],
+      [
+        { content: "Nombre", styles: { textColor: "#FFFFFF" } },
+        { content: "Horas", styles: { textColor: "#FFFFFF" } },
+      ],
+      [
+        nombre,
+        {
+          content: contarHorasPorMaestro(nombre),
+          styles: { textColor: "#000000" },
+        },
+      ],
     ];
+
     doc.autoTable({
       head: [tableData[0]],
       body: tableData.slice(1),
       startY: textoY + 10,
-      styles: { halign: "center" },
+      styles: {
+        halign: "center",
+        fillColor: "#FA5252",
+      },
     });
 
     // Guardar el PDF

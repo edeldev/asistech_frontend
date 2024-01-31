@@ -1,362 +1,392 @@
 .maestros {
-    height: 75px;
-    width: 100%;
-    background-color: #FA5252;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5rem;
+  height: 75px;
+  width: 100%;
+  background-color: #fa5252;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5rem;
 }
 
 .maestros p {
-    margin: 0;
-    color: #FFFFFF;
+  margin: 0;
+  color: #ffffff;
 }
 
 .maestros p:nth-child(2) {
-    font-style: italic;
+  font-style: italic;
 }
 
 .maestros .dropdown {
-    position: absolute;
-    right: 75px;
-    top: 0;
-    padding: 1rem 5rem;
-    margin-top: 3.24rem;
-    background: #fa5252c7;
-    border-radius: 1rem;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 10px black;
-    z-index: 2;
+  position: absolute;
+  right: 75px;
+  top: 0;
+  padding: 1rem 5rem;
+  margin-top: 3.24rem;
+  background: #fa5252c7;
+  border-radius: 1rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px black;
+  z-index: 2;
 }
 
 .maestros .dropdown ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    text-align: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .maestros .dropdown ul li {
-    background-color: #FFFFFF;
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    transition: background-color .5s ease;
-    margin: 10px 0;
+  background-color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.5s ease;
+  margin: 10px 0;
 }
 
 .maestros .dropdown ul li:hover {
-    background-color: #ffffffbb;
-    cursor: pointer;
+  background-color: #ffffffbb;
+  cursor: pointer;
 }
 
 .logo {
-    display: flex;
-    flex-grow: 1;
-    flex-basis: 0;
-    z-index: 1;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  z-index: 1;
 }
 
 .menu {
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
-    flex-basis: 0;
-    z-index: 1;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  flex-basis: 0;
+  z-index: 1;
 }
 
 .menu p {
-    background-color: #FFFFFF;
-    color: #000000;
-    padding: .2rem 1rem;
-    border-radius: .5rem;
-    transition: background-color .5s ease;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.5s ease;
 }
 
 .menu p:hover {
-    background-color: #ffffffbd;
-    backdrop-filter: blur(10px);
-    cursor: pointer;
+  background-color: #ffffffbd;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 
 .maestros__main {
-    padding: 1rem 0;
-    width: 90%;
-    margin: 0 auto;
+  padding: 1rem 0;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .maestros__main p {
-    font-size: 16px;
-    margin-top: 1rem;
-    font-style: italic;
+  font-size: 16px;
+  margin-top: 1rem;
+  font-style: italic;
 }
 
 @media (max-width: 976px) {
-    .maestros {
-        padding: 1rem 2rem;
-    }
+  .maestros {
+    padding: 1rem 2rem;
+  }
 
-    .maestros p {
-        font-size: 13px;
-    }
+  .maestros p {
+    font-size: 13px;
+  }
 
-    .maestros .dropdown {
-        right: 30px;
-    }
+  .maestros .dropdown {
+    right: 30px;
+  }
 
-    .maestros p:nth-child(2) {
-        display: none;
-    }
+  .maestros p:nth-child(2) {
+    display: none;
+  }
 }
 
 /** TABLA */
 .tabla {
-    border: 1px solid #ccc;
-    border-radius: 0 0 5px 5px;
-    overflow: auto;
+  border: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  overflow: auto;
 }
 
 .semana {
-    margin: 0;
-    padding: .5rem 0;
-    position: sticky;
-    top: 0;
-    background-color: #27272A;
-    color: #FFFFFF;
-    border-radius: 5px 5px 0 0;
+  margin: 0;
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  background-color: #27272a;
+  color: #ffffff;
+  border-radius: 5px 5px 0 0;
 }
 
 .dia {
-    margin: 0;
-    position: sticky;
-    top: 0;
-    background-color: rgb(215 215 103);
-    color: #000000;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  background-color: rgb(215 215 103);
+  color: #000000;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #f5f5f5;
-    color: rgb(0, 0, 0);
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f5f5f5;
+  color: rgb(0, 0, 0);
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
 }
 
 th {
-    background-color: #fa5252ba;
-    color: white;
+  background-color: #fa5252ba;
+  color: white;
 }
 
 tr td {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
-.filtro select, .filtro input {
-    border-radius: .5rem;
-    background-color: #ffd8d8;
-    text-align: center;
-    padding: .2rem 0;
+.filtro select,
+.filtro input {
+  border-radius: 0.5rem;
+  background-color: #ffd8d8;
+  text-align: center;
+  padding: 0.2rem 0;
 }
 
 .filtro label {
-    padding: .2rem 0;
+  padding: 0.2rem 0;
 }
 
 .btn-filtro {
-    background-color: #FA5252!important;
-    box-shadow: 0px 2px 8px black;
-    color: white;
-    border: none;
-    transition: all .5s ease;
+  background-color: #fa5252 !important;
+  box-shadow: 0px 2px 8px black;
+  color: white;
+  border: none;
+  transition: all 0.5s ease;
 }
 
 .btn-filtro:hover {
-    background-color:#e03131c8!important;
+  background-color: #e03131c8 !important;
 }
 
 @media (max-width: 1168px) {
-    .asistencia-filtro {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+  .asistencia-filtro {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
-    .filtro {
-        flex-wrap: wrap;
-    }
+  .filtro {
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 768px) {
-    .filtro {
-        flex-direction: column;
-        text-align: center;
-    }
+  .filtro {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .maestros .dropdown {
-        padding: 1rem 2rem;
-    }
+  .maestros .dropdown {
+    padding: 1rem 2rem;
+  }
 }
-
 
 /** FORM ASISTENCIA REGISTRAR */
 .asistencia-maestro {
-    background-color: #ec2e2ede;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    backdrop-filter: blur(5px);
+  background-color: #d33434de;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(5px);
 }
 
 .form-registro {
-    width: 50%;
-    margin: 0 auto;
-    background-color: #ffffff63;
-    backdrop-filter: blur(20px);
-    border-radius: .5rem;
-    text-align: center;
-    padding: 5rem 0;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #fffffff9;
+  border-radius: 0.5rem;
+  padding: 5rem 0;
+  box-shadow: 1px 1px 10px black;
 }
 
 .select__asistencia {
-    margin-bottom: 1rem;
-    padding: .3rem;
-    border-radius: .5rem;
-    border: none;
-    outline: none;
+  margin-bottom: 1rem;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
 }
 
 .form-registro input[type="text"],
 .form-registro input[type="submit"] {
-    width: 50%;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.2rem 0.5rem;
-    background-color: #fddada;
+  width: 50%;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #fddada;
 }
 
 .form-registro input[type="submit"] {
-    background-color: #E03131;
-    box-shadow: 1px 3px 4px black;
-    color: #FFFFFF;
-    transition: all .5s ease;
+  background-color: #e03131;
+  box-shadow: 1px 3px 4px black;
+  color: #ffffff;
+  transition: all 0.5s ease;
 }
 
 .form-registro input[type="submit"]:hover {
-    background-color:#e03131c8;
+  background-color: #e03131c8;
 }
 
+.form-flex {
+  gap: 80px;
+}
+
+.img-logo {
+  width: 250px;
+  height: auto;
+  object-fit: contain;
+}
+
+.content-asistencia {
+  background-color: #fa5252;
+  padding: 30px;
+  border-radius: 10px;
+}
 
 /** CONTAINER ASISTENCIA */
 .container__asistencia {
-    color: #000000;
+  color: #000000;
+}
+
+@media (max-width: 1300px) {
+  .form-flex {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 620px) {
+  .form-registro {
+    padding: 5rem 15rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .form-registro {
+    padding: 5rem 10rem;
+  }
 }
 
 /*! BTN ACTIVAR ASISTENCIA */
 #checkbox {
-    display: none;
-  }
-  
-  .switch {
-    position: relative;
-    width: 70px;
-    height: 70px;
-    background-color: rgb(59 58 58);
-    border-radius: 50%;
-    z-index: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid rgb(126, 126, 126);
-    box-shadow: 0px 0px 3px rgb(2, 2, 2) inset;
-  }
-  
-  .powersign {
-    position: relative;
-    width: 30%;
-    height: 30%;
-    border: 4px solid rgb(255 255 255);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .powersign::before {
-    content: "";
-    width: 8px;
-    height: 100%;
-    background-color: rgb(59 58 58);
-    position: absolute;
-    top: -60%;
-    z-index: 2;
-  }
-  
-  .powersign::after {
-    content: "";
-    width: 4px;
-    height: 100%;
-    background-color: rgb(255 255 255);
-    position: absolute;
-    top: -60%;
-    z-index: 3;
-  }
-  
-  #checkbox:checked + .switch .powersign {
-    border: 4px solid rgb(255, 255, 255);
-    box-shadow: 0px 0px 10px rgb(151, 243, 255),
-      0px 0px 5px rgb(151, 243, 255) inset;
-  }
-  
-  #checkbox:checked + .switch .powersign::after {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 5px rgb(151, 243, 255);
-  }
-  
-  #checkbox:checked + .switch {
-    box-shadow: 0px 0px 1px rgb(151, 243, 255) inset,
-      0px 0px 2px rgb(151, 243, 255) inset,
-      0px 0px 10px rgb(151, 243, 255) inset,
-      0px 0px 40px rgb(151, 243, 255),
-      0px 0px 100px rgb(151, 243, 255),
-      0px 0px 5px rgb(151, 243, 255);
-    border: 2px solid rgb(255, 255, 255);
-    background-color: rgb(146, 180, 184);
-  }
-  
-  #checkbox:checked + .switch .powersign::before {
-    background-color: rgb(146, 180, 184);
-  }  
+  display: none;
+}
 
+.switch {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background-color: rgb(59 58 58);
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgb(126, 126, 126);
+  box-shadow: 0px 0px 3px rgb(2, 2, 2) inset;
+}
+
+.powersign {
+  position: relative;
+  width: 30%;
+  height: 30%;
+  border: 4px solid rgb(255 255 255);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.powersign::before {
+  content: "";
+  width: 8px;
+  height: 100%;
+  background-color: rgb(59 58 58);
+  position: absolute;
+  top: -60%;
+  z-index: 2;
+}
+
+.powersign::after {
+  content: "";
+  width: 4px;
+  height: 100%;
+  background-color: rgb(255 255 255);
+  position: absolute;
+  top: -60%;
+  z-index: 3;
+}
+
+#checkbox:checked + .switch .powersign {
+  border: 4px solid rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgb(151, 243, 255),
+    0px 0px 5px rgb(151, 243, 255) inset;
+}
+
+#checkbox:checked + .switch .powersign::after {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 5px rgb(151, 243, 255);
+}
+
+#checkbox:checked + .switch {
+  box-shadow: 0px 0px 1px rgb(151, 243, 255) inset,
+    0px 0px 2px rgb(151, 243, 255) inset, 0px 0px 10px rgb(151, 243, 255) inset,
+    0px 0px 40px rgb(151, 243, 255), 0px 0px 100px rgb(151, 243, 255),
+    0px 0px 5px rgb(151, 243, 255);
+  border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(146, 180, 184);
+}
+
+#checkbox:checked + .switch .powersign::before {
+  background-color: rgb(146, 180, 184);
+}
 
 /*! ASISTENCIA ALUMNOS */
 .asistencia__container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .container__alumnos {
-    background-color: #fb9e9e73;
-    backdrop-filter: blur(5px);
-    border-radius: .5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
+  background-color: #fb9e9e73;
+  backdrop-filter: blur(5px);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 1500px) {
-
 }

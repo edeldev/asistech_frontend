@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useMaestroAsistencia from "../hooks/useMaestroAsistencia";
 import Alerta from "../components/Alerta";
+import UMMLOGO from "../assets/umm_logo.png";
 
 const FormMaestro = () => {
   const [matricula, setMatricula] = useState("");
@@ -86,35 +87,48 @@ const FormMaestro = () => {
       {msg && <Alerta alerta={alerta} />}
 
       <form onSubmit={handleSubmit} className="form-registro">
-        <select
-          className="select__asistencia d-block mx-auto"
-          value={entrada}
-          onChange={(e) => setEntrada(e.target.value)}
-        >
-          <option value="">-- Seleccione una acción --</option>
-          <option value="entradaUno">Primer Entrada / Salida</option>
-          <option value="entradaDos">Segunda Entrada / Salida</option>
-          <option value="entradaTres">Tercera Entrada / Salida</option>
-          <option value="entradaCuatro">Cuarta Entrada / Salida</option>
-          <option value="entradaCinco">Quinta Entrada / Salida</option>
-          <option value="entradaSeis">Sexta Entrada / Salida</option>
-        </select>
-        <select
-          className="select__asistencia"
-          value={tipoHora}
-          onChange={(e) => setTipoHora(e.target.value)}
-        >
-          <option value="">-- Seleccione una acción --</option>
-          {renderOpcionesSalida()}
-        </select>
-        <input
-          type="text"
-          value={matricula}
-          placeholder="Escribe tu matricula"
-          className="d-block mx-auto mb-3"
-          onChange={(e) => setMatricula(e.target.value)}
-        />
-        <input type="submit" value="Enviar" />
+        <div className="d-flex justify-content-center align-items-center form-flex">
+          <img src={UMMLOGO} alt="logo-umm" className="img-logo" />
+          <div className="content-asistencia">
+            <label className="text-start mb-2 text-white">
+              Elige Entrada/Salida:
+            </label>
+            <select
+              className="select__asistencia d-block mx-auto"
+              value={entrada}
+              onChange={(e) => setEntrada(e.target.value)}
+            >
+              <option value="">-- Seleccione una acción --</option>
+              <option value="entradaUno">Primer Entrada / Salida</option>
+              <option value="entradaDos">Segunda Entrada / Salida</option>
+              <option value="entradaTres">Tercera Entrada / Salida</option>
+              <option value="entradaCuatro">Cuarta Entrada / Salida</option>
+              <option value="entradaCinco">Quinta Entrada / Salida</option>
+              <option value="entradaSeis">Sexta Entrada / Salida</option>
+            </select>
+            <label className="text-start mb-2 text-white">
+              Elige una acción:
+            </label>
+            <select
+              className="select__asistencia d-block"
+              value={tipoHora}
+              onChange={(e) => setTipoHora(e.target.value)}
+            >
+              <option value="">-- Seleccione una acción --</option>
+              {renderOpcionesSalida()}
+            </select>
+            <input
+              type="text"
+              value={matricula}
+              placeholder="Escribe tu matricula"
+              className="d-block mx-auto mb-3 w-100 mt-2"
+              onChange={(e) => setMatricula(e.target.value)}
+            />
+            <div className="text-center">
+              <input type="submit" value="Enviar" />
+            </div>
+          </div>
+        </div>
       </form>
     </main>
   );
