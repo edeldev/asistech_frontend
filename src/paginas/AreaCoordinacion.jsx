@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import Filtro from "../components/Filtro";
 import useMaestroAsistencia from "../hooks/useMaestroAsistencia";
 import io from "socket.io-client";
+import * as XLSX from "xlsx";
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
+import ummLogo from "../assets/umm_logo.png";
 
 let socket;
 
@@ -24,6 +28,55 @@ const AreaCoordinacion = () => {
   });
 
   if (cargando2) return "Cargando...";
+
+  const generarReporte = (nombre) => {
+    const doc = new jsPDF();
+    const img = new Image();
+    img.src = ummLogo;
+    const imgWidth = 50;
+    const imgHeight = 15;
+
+    const centerX = doc.internal.pageSize.width / 2;
+
+    const imgX = centerX - imgWidth / 2;
+    const imgY = 20;
+
+    doc.addImage(img, "JPEG", imgX, imgY, imgWidth, imgHeight);
+
+    const lineaY = imgY + imgHeight + 5;
+    const lineaInicioX = centerX - 50;
+    const lineaFinX = centerX + 50;
+    doc.setLineWidth(0.5);
+    doc.line(lineaInicioX, lineaY, lineaFinX, lineaY);
+
+    const texto = `Reporte de horas de asistencia para ${nombre}`;
+    const textoWidth = doc.getTextWidth(texto);
+    const textoX = centerX - textoWidth / 2;
+    const textoY = lineaY + 10;
+    doc.text(texto, textoX, textoY);
+
+    // Agregar tabla
+    const tableData = [
+      ["Nombre", "Horas"],
+      [nombre, contarHorasPorMaestro(nombre)],
+    ];
+    doc.autoTable({
+      head: [tableData[0]],
+      body: tableData.slice(1),
+      startY: textoY + 10,
+      styles: { halign: "center" },
+    });
+
+    // Guardar el PDF
+    doc.save(`${nombre}_reporte.pdf`);
+  };
+
+  const contarHorasPorMaestro = (nombre) => {
+    return asistenciasPorNombre[nombre].reduce(
+      (total, asistencia) => total + contarHoras(asistencia),
+      0
+    );
+  };
 
   const asistenciasPorNombre = asistenciaMaestros.reduce((acc, asistencia) => {
     const nombre = asistencia.nombre;
@@ -63,12 +116,66 @@ const AreaCoordinacion = () => {
     return horas;
   };
 
+  const exportarAExcel = () => {
+    const data = [];
+    Object.keys(asistenciasPorNombre).forEach((nombre) => {
+      data.push([
+        `${nombre} - Total Horas: ${asistenciasPorNombre[nombre].reduce(
+          (total, asistencia) => total + contarHoras(asistencia),
+          0
+        )}`,
+      ]);
+      data.push([
+        "Fecha",
+        "Primer Entrada",
+        "Primer Salida",
+        "Segunda Entrada",
+        "Segunda Salida",
+        "Tercer Entrada",
+        "Tercer Salida",
+        "Cuarta Entrada",
+        "Cuarta Salida",
+        "Quinta Entrada",
+        "Quinta Salida",
+        "Sexta Entrada",
+        "Sexta Salida",
+      ]);
+      asistenciasPorNombre[nombre].forEach((asistencia) => {
+        data.push([
+          `${
+            asistencia.dia.charAt(0).toUpperCase() + asistencia.dia.slice(1)
+          }, ${asistencia.fecha}`,
+          asistencia.horaUno,
+          asistencia.horaDos,
+          asistencia.horaTres,
+          asistencia.horaCuatro,
+          asistencia.horaCinco,
+          asistencia.horaSeis,
+          asistencia.horaSiete,
+          asistencia.horaOcho,
+          asistencia.horaNueve,
+          asistencia.horaDiez,
+          asistencia.horaOnce,
+          asistencia.horaDoce,
+        ]);
+      });
+      data.push([]);
+    });
+
+    const ws = XLSX.utils.aoa_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Asistencias");
+
+    // Guardar el archivo
+    XLSX.writeFile(wb, "asistencias-maestros.xlsx");
+  };
+
   return (
     <>
       {Object.keys(asistenciasPorNombre).length > 0 ? (
         <>
           <div className="asistencia-filtro d-flex justify-content-between align-items-center mt-3 mb-5">
-            <button>Exportar excel</button>
+            <button onClick={exportarAExcel}>Exportar Excel</button>
             <Filtro />
           </div>
           <h2 className="fw-bold">Docentes</h2>
@@ -81,6 +188,9 @@ const AreaCoordinacion = () => {
               >
                 {`${nombre}`}
               </h3>
+              <button onClick={() => generarReporte(nombre)}>
+                Generar Reporte
+              </button>
 
               {seccionAbierta === nombre && (
                 <>
