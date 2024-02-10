@@ -25,8 +25,6 @@ import AreaMaestros from "./paginas/AreaMaestros";
 import AreaAlumnos from "./paginas/AreaAlumnos";
 
 function App() {
-  const [tipoUsuario, setTipoUsuario] = useState("");
-
   return (
     <BrowserRouter>
       <AuthCoordinacion>

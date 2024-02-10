@@ -157,7 +157,9 @@ const AreaCoordinacion = () => {
         data.push([
           `${
             asistencia.dia.charAt(0).toUpperCase() + asistencia.dia.slice(1)
-          }, ${asistencia.fecha}`,
+          }, ${asistencia.fecha} ${
+            asistencia.tipoAsistencia === "enLinea" ? "En Línea" : "Presencial"
+          }`,
           asistencia.horaUno,
           asistencia.horaDos,
           asistencia.horaTres,
@@ -234,10 +236,25 @@ const AreaCoordinacion = () => {
                       <tbody>
                         {asistenciasPorNombre[nombre].map((asistencia) => (
                           <tr key={asistencia._id}>
-                            <td>{`${
-                              asistencia.dia.charAt(0).toUpperCase() +
-                              asistencia.dia.slice(1)
-                            } ${asistencia.fecha}`}</td>
+                            <td>
+                              {`${
+                                asistencia.dia.charAt(0).toUpperCase() +
+                                asistencia.dia.slice(1)
+                              } ${asistencia.fecha}`}{" "}
+                              {
+                                <span
+                                  className={
+                                    asistencia.tipoAsistencia === "enLinea"
+                                      ? "linea"
+                                      : "presencial"
+                                  }
+                                >
+                                  {asistencia.tipoAsistencia === "enLinea"
+                                    ? "En Línea"
+                                    : "Presencial"}
+                                </span>
+                              }
+                            </td>
                             <td>{asistencia.horaUno}</td>
                             <td>{asistencia.horaDos}</td>
                             <td>{asistencia.horaTres}</td>

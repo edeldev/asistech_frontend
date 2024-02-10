@@ -7,6 +7,7 @@ const FormMaestro = () => {
   const [matricula, setMatricula] = useState("");
   const [tipoHora, setTipoHora] = useState("");
   const [entrada, setEntrada] = useState("");
+  const [tipoAsistencia, setTipoAsistencia] = useState("presencial");
 
   const { submitAsistencia, alerta, mostrarAlerta } = useMaestroAsistencia();
 
@@ -21,10 +22,17 @@ const FormMaestro = () => {
       return;
     }
 
-    await submitAsistencia({ matricula, tipoHora, entrada });
+    await submitAsistencia({ matricula, tipoHora, entrada, tipoAsistencia });
     setMatricula("");
     setTipoHora("");
     setEntrada("");
+  };
+
+  const handleToggleTipoAsistencia = () => {
+    // Cambia entre "presencial" y "enLinea"
+    setTipoAsistencia((prevTipoAsistencia) =>
+      prevTipoAsistencia === "presencial" ? "enLinea" : "presencial"
+    );
   };
 
   const renderOpcionesSalida = () => {
@@ -87,6 +95,15 @@ const FormMaestro = () => {
       {msg && <Alerta alerta={alerta} />}
 
       <form onSubmit={handleSubmit} className="form-registro">
+        <p className="text-center m-0 switch-presencial">
+          Presencial / <span className="switch-linea">En Línea</span>
+        </p>
+        <div className="d-flex justify-content-center">
+          <label className="switch">
+            <input type="checkbox" onChange={handleToggleTipoAsistencia} />
+            <span className="slider"></span>
+          </label>
+        </div>
         <div className="d-flex justify-content-center align-items-center form-flex">
           <img src={UMMLOGO} alt="logo-umm" className="img-logo" />
           <div className="content-asistencia">
