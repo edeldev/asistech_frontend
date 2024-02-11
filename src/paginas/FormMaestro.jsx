@@ -40,43 +40,43 @@ const FormMaestro = () => {
       case "entradaUno":
         return (
           <>
-            <option value="horaUno">Primer Entrada</option>
-            <option value="horaDos">Primer Salida</option>
+            <option value="horaUno">6:00pm</option>
+            <option value="horaDos">6:40pm</option>
           </>
         );
       case "entradaDos":
         return (
           <>
-            <option value="horaTres">Segunda Entrada</option>
-            <option value="horaCuatro">Segunda Salida</option>
+            <option value="horaTres">6:40pm</option>
+            <option value="horaCuatro">7:20pm</option>
           </>
         );
       case "entradaTres":
         return (
           <>
-            <option value="horaCinco">Tercera Entrada</option>
-            <option value="horaSeis">Tercera Salida</option>
+            <option value="horaCinco">7:20pm</option>
+            <option value="horaSeis">8:00pm</option>
           </>
         );
       case "entradaCuatro":
         return (
           <>
-            <option value="horaSiete">Cuarta Entrada</option>
-            <option value="horaOcho">Cuarta Salida</option>
+            <option value="horaSiete">8:00pm</option>
+            <option value="horaOcho">8:40pm</option>
           </>
         );
       case "entradaCinco":
         return (
           <>
-            <option value="horaNueve">Quinta Entrada</option>
-            <option value="horaDiez">Quinta Salida</option>
+            <option value="horaNueve">8:40pm</option>
+            <option value="horaDiez">9:20pm</option>
           </>
         );
       case "entradaSeis":
         return (
           <>
-            <option value="horaOnce">Sexta Entrada</option>
-            <option value="horaDoce">Sexta Salida</option>
+            <option value="horaOnce">9:20pm</option>
+            <option value="horaDoce">10:00pm</option>
           </>
         );
       default:
@@ -95,9 +95,11 @@ const FormMaestro = () => {
       {msg && <Alerta alerta={alerta} />}
 
       <form onSubmit={handleSubmit} className="form-registro">
-        <p className="text-center m-0 switch-presencial">
-          Presencial / <span className="switch-linea">En Línea</span>
-        </p>
+        <div className="pre-line">
+          <p className="text-center m-0 switch-presencial">
+            Presencial / <span className="switch-linea">En Línea</span>
+          </p>
+        </div>
         <div className="d-flex justify-content-center">
           <label className="switch">
             <input type="checkbox" onChange={handleToggleTipoAsistencia} />
@@ -116,12 +118,12 @@ const FormMaestro = () => {
               onChange={(e) => setEntrada(e.target.value)}
             >
               <option value="">-- Seleccione una acción --</option>
-              <option value="entradaUno">Primer Entrada / Salida</option>
-              <option value="entradaDos">Segunda Entrada / Salida</option>
-              <option value="entradaTres">Tercera Entrada / Salida</option>
-              <option value="entradaCuatro">Cuarta Entrada / Salida</option>
-              <option value="entradaCinco">Quinta Entrada / Salida</option>
-              <option value="entradaSeis">Sexta Entrada / Salida</option>
+              <option value="entradaUno">6:00pm / 6:40pm</option>
+              <option value="entradaDos">6:40pm / 7:20pm</option>
+              <option value="entradaTres">7:20pm / 8:00pm</option>
+              <option value="entradaCuatro">8:00pm / 8:40pm</option>
+              <option value="entradaCinco">8:40pm / 9:20pm</option>
+              <option value="entradaSeis">9:20pm / 10:00pm</option>
             </select>
             <label className="text-start mb-2 text-white">
               Elige una acción:

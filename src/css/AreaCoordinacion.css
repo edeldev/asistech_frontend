@@ -268,3 +268,10 @@
     )
   );
 }
+
+@media (max-width: 630px) {
+  .pre-line {
+    display: flex;
+    justify-content: center;
+  }
+}
