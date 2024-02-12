@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Filtro from "../components/Filtro";
 import useMaestroAsistencia from "../hooks/useMaestroAsistencia";
 import io from "socket.io-client";
 import * as XLSX from "xlsx";
@@ -193,7 +192,6 @@ const AreaCoordinacion = () => {
             <button className="excel-button" onClick={exportarAExcel}>
               Exportar a Excel
             </button>
-            <Filtro />
           </div>
           <h2 className="fw-bold">Docentes</h2>
           {Object.keys(asistenciasPorNombre).map((nombre) => (
