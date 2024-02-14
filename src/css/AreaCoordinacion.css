@@ -269,6 +269,38 @@
   );
 }
 
+.eliminar-asistencia {
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  background-color: #e03131;
+  border-radius: 8px;
+  transition: background-color 0.5s ease;
+}
+
+.eliminar-asistencia:hover {
+  background-color: #e03131a3;
+}
+
+.eliminar {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-eliminar {
+  color: rgb(30, 206, 77);
+  font-size: 24px;
+  text-align: center;
+  z-index: 2;
+}
+
 @media (max-width: 630px) {
   .pre-line {
     display: flex;

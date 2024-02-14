@@ -5,14 +5,20 @@ import io from "socket.io-client";
 import * as XLSX from "xlsx";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import Alerta from "../components/Alerta";
 import ummLogo from "../assets/umm_logo.png";
 
 let socket;
 
 const AreaCoordinacion = () => {
   const [seccionAbierta, setSeccionAbierta] = useState(null);
-  const { asistenciaMaestros, cargando2, submitAsistenciaMaestro } =
-    useMaestroAsistencia();
+  const {
+    asistenciaMaestros,
+    cargando2,
+    submitAsistenciaMaestro,
+    eliminarTodasAsistencias,
+    alerta,
+  } = useMaestroAsistencia();
   const params = useParams();
 
   useEffect(() => {
@@ -184,13 +190,26 @@ const AreaCoordinacion = () => {
     XLSX.writeFile(wb, "asistencias-maestros.xlsx");
   };
 
+  const { msg } = alerta;
+
   return (
     <>
+      {msg && (
+        <div className="eliminar">
+          <h2 className="text-eliminar">Asistencias eliminadas</h2>
+        </div>
+      )}
       {Object.keys(asistenciasPorNombre).length > 0 ? (
         <>
           <div className="asistencia-filtro d-flex justify-content-between align-items-center mt-3 mb-5">
             <button className="excel-button" onClick={exportarAExcel}>
               Exportar a Excel
+            </button>
+            <button
+              className="eliminar-asistencia"
+              onClick={() => eliminarTodasAsistencias()}
+            >
+              Eliminar Asistencias
             </button>
           </div>
           <h2 className="fw-bold">Docentes</h2>

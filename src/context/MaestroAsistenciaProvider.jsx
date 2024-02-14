@@ -2,7 +2,7 @@ import { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import clienteAxios from "../config/clienteAxios";
 import io from "socket.io-client";
-
+import useCoordinacion from "../hooks/useCoordinacion";
 let socket;
 
 const MaestroAsistenciaContext = createContext();
@@ -11,6 +11,7 @@ const MaestroAsistenciaProvider = ({ children }) => {
   const [asistenciaMaestros, setAsistenciaMaestros] = useState([]);
   const [alerta, setAlerta] = useState({});
   const [cargando2, setCargando2] = useState(true);
+  const { authCoordinacion } = useCoordinacion();
 
   const navigate = useNavigate();
 
@@ -70,6 +71,28 @@ const MaestroAsistenciaProvider = ({ children }) => {
     }
   };
 
+  const eliminarTodasAsistencias = async () => {
+    try {
+      await clienteAxios.delete(
+        `/usuarios/area-coordinacion/${authCoordinacion._id}`
+      );
+      setAsistenciaMaestros([]);
+      mostrarAlerta({
+        msg: "Todas las asistencias han sido eliminadas correctamente.",
+        error: false,
+      });
+      setTimeout(() => {
+        mostrarAlerta({});
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+      mostrarAlerta({
+        msg: "Error al eliminar todas las asistencias.",
+        error: true,
+      });
+    }
+  };
+
   const cerrarSesion = () => {
     setAsistenciaMaestros([]);
     setAlerta({});
@@ -90,6 +113,7 @@ const MaestroAsistenciaProvider = ({ children }) => {
         mostrarAlerta,
         submitAsistenciaMaestro,
         cerrarSesion,
+        eliminarTodasAsistencias,
       }}
     >
       {children}
