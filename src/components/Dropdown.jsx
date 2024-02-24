@@ -19,11 +19,6 @@ const Dropdown = ({ tipoUsuario, setToggleMenu }) => {
     navigate("/");
   };
 
-  const handleLogoutAlumno = () => {
-    localStorage.removeItem("token-alumno");
-    navigate("/");
-  };
-
   return (
     <div className="dropdown">
       <ul>
@@ -31,18 +26,18 @@ const Dropdown = ({ tipoUsuario, setToggleMenu }) => {
           <>
             <li onClick={handleLogoutMaestro}>Cerrar Sesión</li>
           </>
-        ) : tipoUsuario === "coordinacion" ? (
-          <>
-            <li onClick={() => navigate("/alumno-registrar")}>
-              Registrar a un alumno
-            </li>
-            <li onClick={() => navigate("/maestro-registrar")}>
-              Registrar a un Maestro
-            </li>
-            <li onClick={handleLogoutCoordinacion}>Cerrar Sesión</li>
-          </>
         ) : (
-          <li onClick={handleLogoutAlumno}>Cerrar Sesión</li>
+          tipoUsuario === "coordinacion" && (
+            <>
+              <li onClick={() => navigate("/alumno-registrar")}>
+                Registrar a un alumno
+              </li>
+              <li onClick={() => navigate("/coordinacion-registrar")}>
+                Registrar a un Coordinador
+              </li>
+              <li onClick={handleLogoutCoordinacion}>Cerrar Sesión</li>
+            </>
+          )
         )}
       </ul>
     </div>

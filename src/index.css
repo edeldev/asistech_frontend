@@ -120,7 +120,8 @@ body {
   background-color: #cf2323cb;
   left: 0;
   border-radius: 10px 10px 10px 0;
-  content: "Área Alumnos";
+  content: "Área Coordinación";
+  font-size: 11px;
 }
 
 .forms__container.activo::before {
@@ -268,7 +269,7 @@ body {
 
 .forms__registrar .contenido::before,
 .forms__registrar .contenido.activo::before {
-  content: "Área Alumnos";
+  content: "Área Coordinación";
   left: 0;
   right: auto;
   border-radius: 10px 10px 10px 0;
