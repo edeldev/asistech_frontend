@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Alerta from "../components/Alerta";
 import clienteAxios from "../config/clienteAxios";
 import useMaestros from "../hooks/useMaestros";
-import useAlumnos from "../hooks/useAlumnos";
+import useCoordinacion from "../hooks/useCoordinacion";
 
 const Login = ({ tipoUsuario }) => {
   const [matricula, setMatricula] = useState("");
@@ -11,7 +11,7 @@ const Login = ({ tipoUsuario }) => {
   const [alerta, setAlerta] = useState({});
 
   const { setAuthMaestros } = useMaestros();
-  const { setAuthAlumnos } = useAlumnos();
+  const { setAuthCoordinacion } = useCoordinacion();
 
   const navigate = useNavigate();
 
@@ -42,17 +42,23 @@ const Login = ({ tipoUsuario }) => {
       const { data } = await clienteAxios.post(
         tipoUsuario === "maestro"
           ? "/usuarios/login-maestro"
-          : "/usuarios/login-alumno",
+          : "/usuarios/login-coordinacion",
         { matricula, password }
       );
       setAlerta({});
       if (tipoUsuario === "maestro") {
         localStorage.setItem("token-maestro", data.token);
       } else {
-        localStorage.setItem("token-alumno", data.token);
+        localStorage.setItem("token-coordinacion", data.token);
       }
-      tipoUsuario === "maestro" ? setAuthMaestros(data) : setAuthAlumnos(data);
-      navigate(tipoUsuario === "maestro" ? `/area-maestros` : `/area-alumnos`);
+      tipoUsuario === "maestro"
+        ? setAuthMaestros(data)
+        : setAuthCoordinacion(data);
+      navigate(
+        tipoUsuario === "maestro"
+          ? `/area-maestros`
+          : `/area-coordinacion/${data._id}`
+      );
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,
@@ -123,8 +129,8 @@ const Login = ({ tipoUsuario }) => {
           <p className="my-4 fw-light text-white">
             ¡Ahora la asistencia es más rápido y fácil!
           </p>
-          <Link to={tipoUsuario === "maestro" ? "/login-alumno" : "/"}>
-            {tipoUsuario === "maestro" ? "Área Alumnos" : "Área Maestros"}
+          <Link to={tipoUsuario === "maestro" ? "/login-coordinacion" : "/"}>
+            {tipoUsuario === "maestro" ? "Área Coordinacion" : "Área Maestros"}
           </Link>
         </div>
       </div>

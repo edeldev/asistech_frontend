@@ -51,7 +51,7 @@ const Registrar = ({ tipoUsuario }) => {
 
     const rutaRegistro =
       tipoUsuario === "alumno"
-        ? "/usuarios/alumno-registrar"
+        ? "/usuarios/coordinacion-registrar"
         : "/usuarios/maestro-registrar";
 
     // Crear el usuario en la API
@@ -147,13 +147,13 @@ const Registrar = ({ tipoUsuario }) => {
               <Link
                 to={`${
                   tipoUsuario === "maestro"
-                    ? "/alumno-registrar"
+                    ? "/coordinacion-registrar"
                     : "/maestro-registrar"
                 }`}
                 className="text-decoration-none text-black"
               >
                 {tipoUsuario === "maestro"
-                  ? "Registrar Alumno"
+                  ? "Registrar Coordinación"
                   : "Registrar Maestro"}
               </Link>
 
