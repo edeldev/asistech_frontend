@@ -369,6 +369,22 @@ tr td {
   background-color: rgb(146, 180, 184);
 }
 
+.check-asistencias {
+  min-height: 75vh;
+}
+
+.save-asistencias {
+  background-color: #171717;
+  padding: 100px;
+  color: white;
+  border-radius: 20px;
+}
+
+.check-icon {
+  font-size: 20px;
+  color: #56e037;
+}
+
 /*! ASISTENCIA ALUMNOS */
 .asistencia__container {
   width: 90%;

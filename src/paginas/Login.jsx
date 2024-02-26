@@ -56,7 +56,7 @@ const Login = ({ tipoUsuario }) => {
         : setAuthCoordinacion(data);
       navigate(
         tipoUsuario === "maestro"
-          ? `/area-maestros`
+          ? `/area-maestros/${data._id}`
           : `/area-coordinacion/${data._id}`
       );
     } catch (error) {
