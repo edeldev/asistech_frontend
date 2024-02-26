@@ -52,7 +52,7 @@ function App() {
                 />
               </Route>
 
-              <Route path="/area-maestros" element={<RutaMaestros />}>
+              <Route path="/area-maestros/:id" element={<RutaMaestros />}>
                 <Route index element={<AreaMaestros tipoUsuario="maestro" />} />
               </Route>
 

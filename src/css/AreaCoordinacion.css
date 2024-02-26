@@ -190,6 +190,11 @@
   font-size: 12px;
 }
 
+.check-icon-delete {
+  font-size: 30px;
+  color: #e03737;
+}
+
 .switch-presencial {
   color: rgb(213, 76, 72);
 }
@@ -293,9 +298,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 5px;
 }
 .text-eliminar {
-  color: rgb(30, 206, 77);
+  color: rgb(255, 255, 255);
   font-size: 24px;
   text-align: center;
   z-index: 2;

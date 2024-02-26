@@ -5,7 +5,6 @@ import io from "socket.io-client";
 import * as XLSX from "xlsx";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
-import Alerta from "../components/Alerta";
 import ummLogo from "../assets/umm_logo.png";
 
 let socket;
@@ -196,20 +195,22 @@ const AreaCoordinacion = () => {
     <>
       {msg && (
         <div className="eliminar">
+          <i className="bi bi-trash3 check-icon-delete"></i>
           <h2 className="text-eliminar">Asistencias eliminadas</h2>
         </div>
       )}
       {Object.keys(asistenciasPorNombre).length > 0 ? (
         <>
           <div className="asistencia-filtro d-flex justify-content-between align-items-center mt-3 mb-5">
-            <button className="excel-button" onClick={exportarAExcel}>
-              Exportar a Excel
+            <button className="excel-button mb-3" onClick={exportarAExcel}>
+              Exportar a Excel{" "}
+              <i className="bi bi-file-earmark-spreadsheet"></i>
             </button>
             <button
               className="eliminar-asistencia"
               onClick={() => eliminarTodasAsistencias()}
             >
-              Eliminar Asistencias
+              Eliminar Asistencias <i className="bi bi-trash3"></i>
             </button>
           </div>
           <h2 className="fw-bold">Docentes</h2>
@@ -226,7 +227,7 @@ const AreaCoordinacion = () => {
                 onClick={() => generarReporte(nombre)}
                 className="button-reporte"
               >
-                Generar Reporte
+                Generar Reporte <i className="bi bi-file-earmark-pdf"></i>
               </button>
 
               {seccionAbierta === nombre && (

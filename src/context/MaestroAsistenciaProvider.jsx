@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import clienteAxios from "../config/clienteAxios";
 import io from "socket.io-client";
 import useCoordinacion from "../hooks/useCoordinacion";
+import useMaestros from "../hooks/useMaestros";
 let socket;
 
 const MaestroAsistenciaContext = createContext();
@@ -12,6 +13,7 @@ const MaestroAsistenciaProvider = ({ children }) => {
   const [alerta, setAlerta] = useState({});
   const [cargando2, setCargando2] = useState(true);
   const { authCoordinacion } = useCoordinacion();
+  const { authMaestros } = useMaestros();
 
   const navigate = useNavigate();
 
@@ -50,7 +52,7 @@ const MaestroAsistenciaProvider = ({ children }) => {
         error: false,
       });
       setTimeout(() => {
-        navigate(`/area-maestros`);
+        navigate(`/area-maestros/${authMaestros._id}`);
       }, 3000);
 
       // Socket io
@@ -72,24 +74,30 @@ const MaestroAsistenciaProvider = ({ children }) => {
   };
 
   const eliminarTodasAsistencias = async () => {
-    try {
-      await clienteAxios.delete(
-        `/usuarios/area-coordinacion/${authCoordinacion._id}`
-      );
-      setAsistenciaMaestros([]);
-      mostrarAlerta({
-        msg: "Todas las asistencias han sido eliminadas correctamente.",
-        error: false,
-      });
-      setTimeout(() => {
-        mostrarAlerta({});
-      }, 3000);
-    } catch (error) {
-      console.log(error);
-      mostrarAlerta({
-        msg: "Error al eliminar todas las asistencias.",
-        error: true,
-      });
+    const confirmarEliminacion = window.confirm(
+      "¿Estás seguro de que quieres eliminar todas las asistencias?"
+    );
+
+    if (confirmarEliminacion) {
+      try {
+        await clienteAxios.delete(
+          `/usuarios/area-coordinacion/${authCoordinacion._id}`
+        );
+        setAsistenciaMaestros([]);
+        mostrarAlerta({
+          msg: "Todas las asistencias han sido eliminadas correctamente.",
+          error: false,
+        });
+        setTimeout(() => {
+          mostrarAlerta({});
+        }, 3000);
+      } catch (error) {
+        console.log(error);
+        mostrarAlerta({
+          msg: "Error al eliminar todas las asistencias.",
+          error: true,
+        });
+      }
     }
   };
 

@@ -50,7 +50,7 @@ const Registrar = ({ tipoUsuario }) => {
     setAlerta({});
 
     const rutaRegistro =
-      tipoUsuario === "alumno"
+      tipoUsuario === "coordinacion"
         ? "/usuarios/coordinacion-registrar"
         : "/usuarios/maestro-registrar";
 
