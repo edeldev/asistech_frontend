@@ -6,11 +6,16 @@ import * as XLSX from "xlsx";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import ummLogo from "../assets/umm_logo.png";
+import Filtro from "../components/Filtro";
 
 let socket;
 
 const AreaCoordinacion = () => {
   const [seccionAbierta, setSeccionAbierta] = useState(null);
+  const [asistenciasFiltrados, setAsistenciasFiltrados] = useState([]);
+  const [matriculaMaestro, setMatricula] = useState("");
+  const [dia, setDia] = useState("");
+  const [mes, setMes] = useState("");
   const {
     asistenciaMaestros,
     cargando2,
@@ -30,6 +35,21 @@ const AreaCoordinacion = () => {
       submitAsistenciaMaestro(asistenciaNueva);
     });
   });
+
+  useEffect(() => {
+    // Verificar si asistenciaMaestros es un array no vacío
+    if (Array.isArray(asistenciaMaestros) && asistenciaMaestros.length > 0) {
+      const filtroAsistencias = asistenciaMaestros.filter(
+        (asistencia) =>
+          asistencia.matricula === matriculaMaestro &&
+          asistencia.dia === dia &&
+          asistencia.mes === mes
+      );
+      setAsistenciasFiltrados(filtroAsistencias);
+    } else {
+      setAsistenciasFiltrados([]);
+    }
+  }, [asistenciaMaestros, matriculaMaestro, dia, mes]);
 
   if (cargando2) return "Cargando...";
 
@@ -103,6 +123,18 @@ const AreaCoordinacion = () => {
     acc[nombre].push(asistencia);
     return acc;
   }, {});
+
+  const asistenciasPorNombreFiltro = asistenciasFiltrados.reduce(
+    (acc, asistencia) => {
+      const nombre = asistencia.nombre;
+      if (!acc[nombre]) {
+        acc[nombre] = [];
+      }
+      acc[nombre].push(asistencia);
+      return acc;
+    },
+    {}
+  );
 
   const toggleSeccion = (nombre) => {
     setSeccionAbierta((prevSeccion) =>
@@ -213,109 +245,237 @@ const AreaCoordinacion = () => {
               Eliminar Asistencias <i className="bi bi-trash3"></i>
             </button>
           </div>
-          <h2 className="fw-bold">Docentes</h2>
-          {Object.keys(asistenciasPorNombre).map((nombre) => (
-            <div key={nombre}>
-              <h3
-                className="text-center fw-bold semana mt-4"
-                onClick={() => toggleSeccion(nombre)}
-                style={{ cursor: "pointer" }}
-              >
-                {`${nombre}`}
-              </h3>
-              <button
-                onClick={() => generarReporte(nombre)}
-                className="button-reporte"
-              >
-                Generar Reporte <i className="bi bi-file-earmark-pdf"></i>
-              </button>
+          <div className="d-flex justify-content-center mb-4">
+            <Filtro
+              matriculaMaestro={matriculaMaestro}
+              setMatricula={setMatricula}
+              dia={dia}
+              setDia={setDia}
+              mes={mes}
+              setMes={setMes}
+            />
+          </div>
 
-              {seccionAbierta === nombre && (
-                <>
-                  <div className="tabla">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Fecha</th>
-                          <th>Primer Entrada</th>
-                          <th>Primer Salida</th>
-                          <th>Segunda Entrada</th>
-                          <th>Segunda Salida</th>
-                          <th>Tercer Entrada</th>
-                          <th>Tercer Salida</th>
-                          <th>Cuarta Entrada</th>
-                          <th>Cuarta Salida</th>
-                          <th>Quinta Entrada</th>
-                          <th>Quinta Salida</th>
-                          <th>Sexta Entrada</th>
-                          <th>Sexta Salida</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {asistenciasPorNombre[nombre].map((asistencia) => (
-                          <tr key={asistencia._id}>
-                            <td>
-                              {`${
-                                asistencia.dia.charAt(0).toUpperCase() +
-                                asistencia.dia.slice(1)
-                              } ${asistencia.fecha}`}{" "}
-                              {
-                                <span
-                                  className={
-                                    asistencia.tipoAsistencia === "enLinea"
-                                      ? "linea"
-                                      : "presencial"
-                                  }
-                                >
-                                  {asistencia.tipoAsistencia === "enLinea"
-                                    ? "En Línea"
-                                    : "Presencial"}
-                                </span>
-                              }
-                            </td>
-                            <td>{asistencia.horaUno}</td>
-                            <td>{asistencia.horaDos}</td>
-                            <td>{asistencia.horaTres}</td>
-                            <td>{asistencia.horaCuatro}</td>
-                            <td>{asistencia.horaCinco}</td>
-                            <td>{asistencia.horaSeis}</td>
-                            <td>{asistencia.horaSiete}</td>
-                            <td>{asistencia.horaOcho}</td>
-                            <td>{asistencia.horaNueve}</td>
-                            <td>{asistencia.horaDiez}</td>
-                            <td>{asistencia.horaOnce}</td>
-                            <td>{asistencia.horaDoce}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+          {asistenciasFiltrados.length > 0 ? (
+            <>
+              <h2 className="fw-bold">Docentes filtrados</h2>
+              {Object.keys(asistenciasPorNombreFiltro).map((nombre) => (
+                <div key={nombre}>
+                  <h3
+                    className="text-center fw-bold semana mt-4"
+                    onClick={() => toggleSeccion(nombre)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {`${nombre}`}
+                  </h3>
+                  <button
+                    onClick={() => generarReporte(nombre)}
+                    className="button-reporte"
+                  >
+                    Generar Reporte <i className="bi bi-file-earmark-pdf"></i>
+                  </button>
+                  {seccionAbierta === nombre && (
+                    <>
+                      <div className="tabla">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Fecha</th>
+                              <th>Primer Entrada</th>
+                              <th>Primer Salida</th>
+                              <th>Segunda Entrada</th>
+                              <th>Segunda Salida</th>
+                              <th>Tercer Entrada</th>
+                              <th>Tercer Salida</th>
+                              <th>Cuarta Entrada</th>
+                              <th>Cuarta Salida</th>
+                              <th>Quinta Entrada</th>
+                              <th>Quinta Salida</th>
+                              <th>Sexta Entrada</th>
+                              <th>Sexta Salida</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {asistenciasPorNombreFiltro[nombre].map(
+                              (asistencia) => (
+                                <tr key={asistencia._id}>
+                                  <td>
+                                    {`${
+                                      asistencia.dia.charAt(0).toUpperCase() +
+                                      asistencia.dia.slice(1)
+                                    } ${asistencia.fecha}`}{" "}
+                                    <span
+                                      className={
+                                        asistencia.tipoAsistencia === "enLinea"
+                                          ? "linea"
+                                          : "presencial"
+                                      }
+                                    >
+                                      {asistencia.tipoAsistencia === "enLinea"
+                                        ? "En Línea"
+                                        : "Presencial"}
+                                    </span>
+                                  </td>
+                                  <td>{asistencia.horaUno}</td>
+                                  <td>{asistencia.horaDos}</td>
+                                  <td>{asistencia.horaTres}</td>
+                                  <td>{asistencia.horaCuatro}</td>
+                                  <td>{asistencia.horaCinco}</td>
+                                  <td>{asistencia.horaSeis}</td>
+                                  <td>{asistencia.horaSiete}</td>
+                                  <td>{asistencia.horaOcho}</td>
+                                  <td>{asistencia.horaNueve}</td>
+                                  <td>{asistencia.horaDiez}</td>
+                                  <td>{asistencia.horaOnce}</td>
+                                  <td>{asistencia.horaDoce}</td>
+                                </tr>
+                              )
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
 
-                  <p className="fw-bold mt-3">
-                    Cantidad total de hora
-                    {asistenciasPorNombre[nombre].reduce(
-                      (total, asistencia) => total + contarHoras(asistencia),
-                      0
-                    ) === 1
-                      ? " "
-                      : "s "}
-                    para {nombre}:{" "}
-                    {asistenciasPorNombre[nombre].reduce(
-                      (total, asistencia) => total + contarHoras(asistencia),
-                      0
-                    )}{" "}
-                    hora
-                    {asistenciasPorNombre[nombre].reduce(
-                      (total, asistencia) => total + contarHoras(asistencia),
-                      0
-                    ) === 1
-                      ? ""
-                      : "s"}
-                  </p>
-                </>
-              )}
-            </div>
-          ))}
+                      <div className="d-flex justify-content-between">
+                        <p className="fw-bold mt-3">
+                          Cantidad total de hora
+                          {asistenciasPorNombre[nombre].reduce(
+                            (total, asistencia) =>
+                              total + contarHoras(asistencia),
+                            0
+                          ) === 1
+                            ? " "
+                            : "s "}
+                          para {nombre}:{" "}
+                          {asistenciasPorNombre[nombre].reduce(
+                            (total, asistencia) =>
+                              total + contarHoras(asistencia),
+                            0
+                          )}{" "}
+                          hora
+                          {asistenciasPorNombre[nombre].reduce(
+                            (total, asistencia) =>
+                              total + contarHoras(asistencia),
+                            0
+                          ) === 1
+                            ? ""
+                            : "s"}
+                        </p>
+                        <p>
+                          Número de asistencias filtradas:{" "}
+                          {asistenciasFiltrados.length}
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
+            </>
+          ) : (
+            <>
+              <h2 className="fw-bold">Docentes</h2>
+              {Object.keys(asistenciasPorNombre).map((nombre) => (
+                <div key={nombre}>
+                  <h3
+                    className="text-center fw-bold semana mt-4"
+                    onClick={() => toggleSeccion(nombre)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {`${nombre}`}
+                  </h3>
+                  <button
+                    onClick={() => generarReporte(nombre)}
+                    className="button-reporte"
+                  >
+                    Generar Reporte <i className="bi bi-file-earmark-pdf"></i>
+                  </button>
+                  {seccionAbierta === nombre && (
+                    <>
+                      <div className="tabla">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Fecha</th>
+                              <th>Primer Entrada</th>
+                              <th>Primer Salida</th>
+                              <th>Segunda Entrada</th>
+                              <th>Segunda Salida</th>
+                              <th>Tercer Entrada</th>
+                              <th>Tercer Salida</th>
+                              <th>Cuarta Entrada</th>
+                              <th>Cuarta Salida</th>
+                              <th>Quinta Entrada</th>
+                              <th>Quinta Salida</th>
+                              <th>Sexta Entrada</th>
+                              <th>Sexta Salida</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {asistenciasPorNombre[nombre].map((asistencia) => (
+                              <tr key={asistencia._id}>
+                                <td>
+                                  {`${
+                                    asistencia.dia.charAt(0).toUpperCase() +
+                                    asistencia.dia.slice(1)
+                                  } ${asistencia.fecha}`}{" "}
+                                  <span
+                                    className={
+                                      asistencia.tipoAsistencia === "enLinea"
+                                        ? "linea"
+                                        : "presencial"
+                                    }
+                                  >
+                                    {asistencia.tipoAsistencia === "enLinea"
+                                      ? "En Línea"
+                                      : "Presencial"}
+                                  </span>
+                                </td>
+                                <td>{asistencia.horaUno}</td>
+                                <td>{asistencia.horaDos}</td>
+                                <td>{asistencia.horaTres}</td>
+                                <td>{asistencia.horaCuatro}</td>
+                                <td>{asistencia.horaCinco}</td>
+                                <td>{asistencia.horaSeis}</td>
+                                <td>{asistencia.horaSiete}</td>
+                                <td>{asistencia.horaOcho}</td>
+                                <td>{asistencia.horaNueve}</td>
+                                <td>{asistencia.horaDiez}</td>
+                                <td>{asistencia.horaOnce}</td>
+                                <td>{asistencia.horaDoce}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="fw-bold mt-3">
+                        Cantidad total de hora
+                        {asistenciasPorNombre[nombre].reduce(
+                          (total, asistencia) =>
+                            total + contarHoras(asistencia),
+                          0
+                        ) === 1
+                          ? " "
+                          : "s "}
+                        para {nombre}:{" "}
+                        {asistenciasPorNombre[nombre].reduce(
+                          (total, asistencia) =>
+                            total + contarHoras(asistencia),
+                          0
+                        )}{" "}
+                        hora
+                        {asistenciasPorNombre[nombre].reduce(
+                          (total, asistencia) =>
+                            total + contarHoras(asistencia),
+                          0
+                        ) === 1
+                          ? ""
+                          : "s"}
+                      </p>
+                    </>
+                  )}
+                </div>
+              ))}
+            </>
+          )}
         </>
       ) : (
         <p>Aún no hay asistencias</p>
