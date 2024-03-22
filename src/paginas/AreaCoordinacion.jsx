@@ -8,6 +8,7 @@ import "jspdf-autotable";
 import ummLogo from "../assets/umm_logo.png";
 import Filtro from "../components/Filtro";
 import Alerta from "../components/Alerta";
+import { CapitalizeNames, Capitalize } from "../helpers/CapitalizeNames";
 
 let socket;
 
@@ -271,7 +272,7 @@ const AreaCoordinacion = () => {
                     onClick={() => toggleSeccion(nombre)}
                     style={{ cursor: "pointer" }}
                   >
-                    {`${nombre}`}
+                    {`${CapitalizeNames(nombre)}`}
                   </h3>
                   <button
                     onClick={() => generarReporte(nombre)}
@@ -305,10 +306,9 @@ const AreaCoordinacion = () => {
                               (asistencia) => (
                                 <tr key={asistencia._id}>
                                   <td>
-                                    {`${
-                                      asistencia.dia.charAt(0).toUpperCase() +
-                                      asistencia.dia.slice(1)
-                                    } ${asistencia.fecha}`}{" "}
+                                    {`${Capitalize(asistencia.dia)} ${
+                                      asistencia.fecha
+                                    }`}{" "}
                                     <span
                                       className={
                                         asistencia.tipoAsistencia === "enLinea"
@@ -340,40 +340,37 @@ const AreaCoordinacion = () => {
                         </table>
                       </div>
 
-                      <div className="d-flex justify-content-between">
-                        <p className="fw-bold mt-3">
-                          Cantidad total de hora
-                          {asistenciasPorNombre[nombre].reduce(
-                            (total, asistencia) =>
-                              total + contarHoras(asistencia),
-                            0
-                          ) === 1
-                            ? " "
-                            : "s "}
-                          para {nombre}:{" "}
-                          {asistenciasPorNombre[nombre].reduce(
-                            (total, asistencia) =>
-                              total + contarHoras(asistencia),
-                            0
-                          )}{" "}
-                          hora
-                          {asistenciasPorNombre[nombre].reduce(
-                            (total, asistencia) =>
-                              total + contarHoras(asistencia),
-                            0
-                          ) === 1
-                            ? ""
-                            : "s"}
-                        </p>
-                        <p>
-                          Número de asistencias filtradas:{" "}
-                          {asistenciasFiltrados.length}
-                        </p>
-                      </div>
+                      <p className="fw-bold mt-3">
+                        Cantidad total de hora
+                        {asistenciasPorNombre[nombre].reduce(
+                          (total, asistencia) =>
+                            total + contarHoras(asistencia),
+                          0
+                        ) === 1
+                          ? " "
+                          : "s "}
+                        para {CapitalizeNames(nombre)}:{" "}
+                        {asistenciasPorNombre[nombre].reduce(
+                          (total, asistencia) =>
+                            total + contarHoras(asistencia),
+                          0
+                        )}{" "}
+                        hora
+                        {asistenciasPorNombre[nombre].reduce(
+                          (total, asistencia) =>
+                            total + contarHoras(asistencia),
+                          0
+                        ) === 1
+                          ? ""
+                          : "s"}
+                      </p>
                     </>
                   )}
                 </div>
               ))}
+              <p>
+                Número de asistencias filtradas: {asistenciasFiltrados.length}
+              </p>
             </>
           ) : (
             <>
@@ -385,7 +382,7 @@ const AreaCoordinacion = () => {
                     onClick={() => toggleSeccion(nombre)}
                     style={{ cursor: "pointer" }}
                   >
-                    {`${nombre}`}
+                    {`${CapitalizeNames(nombre)}`}
                   </h3>
                   <button
                     onClick={() => generarReporte(nombre)}
@@ -418,10 +415,9 @@ const AreaCoordinacion = () => {
                             {asistenciasPorNombre[nombre].map((asistencia) => (
                               <tr key={asistencia._id}>
                                 <td>
-                                  {`${
-                                    asistencia.dia.charAt(0).toUpperCase() +
-                                    asistencia.dia.slice(1)
-                                  } ${asistencia.fecha}`}{" "}
+                                  {`${Capitalize(asistencia.dia)} ${
+                                    asistencia.fecha
+                                  }`}{" "}
                                   <span
                                     className={
                                       asistencia.tipoAsistencia === "enLinea"
@@ -460,7 +456,7 @@ const AreaCoordinacion = () => {
                         ) === 1
                           ? " "
                           : "s "}
-                        para {nombre}:{" "}
+                        para {CapitalizeNames(nombre)}:{" "}
                         {asistenciasPorNombre[nombre].reduce(
                           (total, asistencia) =>
                             total + contarHoras(asistencia),
