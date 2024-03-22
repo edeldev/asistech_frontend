@@ -11,7 +11,6 @@ import { AuthMaestros } from "./context/AuthMaestros";
 import { MaestroAsistenciaProvider } from "./context/MaestroAsistenciaProvider";
 
 // Páginas
-import AcercaDe from "./paginas/AcercaDe";
 import AreaCoordinacion from "./paginas/AreaCoordinacion";
 import FormMaestro from "./paginas/FormMaestro";
 import Registrar from "./paginas/Registrar";
@@ -39,7 +38,6 @@ function App() {
                   path="/maestro-registrar"
                   element={<Registrar tipoUsuario="maestro" />}
                 />
-                <Route path="/acerca-de" element={<AcercaDe />} />
               </Route>
 
               <Route
