@@ -29,8 +29,8 @@ const Dropdown = ({ tipoUsuario, setToggleMenu }) => {
         ) : (
           tipoUsuario === "coordinacion" && (
             <>
-              <li onClick={() => navigate("/alumno-registrar")}>
-                Registrar a un alumno
+              <li onClick={() => navigate("/maestro-registrar")}>
+                Registrar a un Maestro
               </li>
               <li onClick={() => navigate("/coordinacion-registrar")}>
                 Registrar a un Coordinador

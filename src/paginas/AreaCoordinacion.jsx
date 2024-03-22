@@ -7,6 +7,7 @@ import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import ummLogo from "../assets/umm_logo.png";
 import Filtro from "../components/Filtro";
+import Alerta from "../components/Alerta";
 
 let socket;
 
@@ -41,8 +42,8 @@ const AreaCoordinacion = () => {
     if (Array.isArray(asistenciaMaestros) && asistenciaMaestros.length > 0) {
       const filtroAsistencias = asistenciaMaestros.filter(
         (asistencia) =>
-          asistencia.matricula === matriculaMaestro &&
-          asistencia.dia === dia &&
+          asistencia.matricula === matriculaMaestro ||
+          asistencia.dia === dia ||
           asistencia.mes === mes
       );
       setAsistenciasFiltrados(filtroAsistencias);
@@ -221,16 +222,19 @@ const AreaCoordinacion = () => {
     XLSX.writeFile(wb, "asistencias-maestros.xlsx");
   };
 
+  const handleClear = (e) => {
+    e.preventDefault();
+    setMatricula("");
+    setDia("");
+    setMes("");
+  };
+
   const { msg } = alerta;
 
   return (
     <>
-      {msg && (
-        <div className="eliminar">
-          <i className="bi bi-trash3 check-icon-delete"></i>
-          <h2 className="text-eliminar">Asistencias eliminadas</h2>
-        </div>
-      )}
+      {msg && <Alerta alerta={alerta} />}
+
       {Object.keys(asistenciasPorNombre).length > 0 ? (
         <>
           <div className="asistencia-filtro d-flex justify-content-between align-items-center mt-3 mb-5">
@@ -253,6 +257,7 @@ const AreaCoordinacion = () => {
               setDia={setDia}
               mes={mes}
               setMes={setMes}
+              handleClear={handleClear}
             />
           </div>
 

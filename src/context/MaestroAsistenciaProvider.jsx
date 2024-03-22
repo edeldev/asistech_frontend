@@ -74,30 +74,47 @@ const MaestroAsistenciaProvider = ({ children }) => {
   };
 
   const eliminarTodasAsistencias = async () => {
-    const confirmarEliminacion = window.confirm(
-      "¿Estás seguro de que quieres eliminar todas las asistencias?"
-    );
+    const clave = prompt("Ingresa la clave para eliminar las asistencias:");
 
-    if (confirmarEliminacion) {
-      try {
-        await clienteAxios.delete(
-          `/usuarios/area-coordinacion/${authCoordinacion._id}`
-        );
-        setAsistenciaMaestros([]);
-        mostrarAlerta({
-          msg: "Todas las asistencias han sido eliminadas correctamente.",
-          error: false,
-        });
-        setTimeout(() => {
-          mostrarAlerta({});
-        }, 3000);
-      } catch (error) {
-        console.log(error);
-        mostrarAlerta({
-          msg: "Error al eliminar todas las asistencias.",
-          error: true,
-        });
+    if (clave === "") {
+      mostrarAlerta({
+        msg: "Ingrese una clave",
+        error: true,
+      });
+      return;
+    }
+
+    if (clave === "umm10") {
+      const confirmarEliminacion = window.confirm(
+        "¿Estás seguro de que quieres eliminar todas las asistencias? Esta acción es irreversible, continue con precaución"
+      );
+
+      if (confirmarEliminacion) {
+        try {
+          await clienteAxios.delete(
+            `/usuarios/area-coordinacion/${authCoordinacion._id}`
+          );
+          setAsistenciaMaestros([]);
+          mostrarAlerta({
+            msg: "Todas las asistencias han sido eliminadas correctamente.",
+            error: false,
+          });
+          setTimeout(() => {
+            mostrarAlerta({});
+          }, 3000);
+        } catch (error) {
+          console.log(error);
+          mostrarAlerta({
+            msg: "Error al eliminar todas las asistencias.",
+            error: true,
+          });
+        }
       }
+    } else {
+      mostrarAlerta({
+        msg: "Clave incorrecta. No se pudieron eliminar todas las asistencias.",
+        error: true,
+      });
     }
   };
 

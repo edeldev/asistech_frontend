@@ -5,6 +5,7 @@ const Filtro = ({
   setDia,
   mes,
   setMes,
+  handleClear,
 }) => {
   return (
     <form className="d-flex gap-3 filtro">
@@ -29,6 +30,9 @@ const Filtro = ({
         value={mes}
         onChange={(e) => setMes(e.target.value)}
       />
+      <button className="submit" onClick={handleClear}>
+        Limpiar filtros
+      </button>
     </form>
   );
 };
