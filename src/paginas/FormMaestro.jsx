@@ -37,46 +37,88 @@ const FormMaestro = () => {
 
   const renderOpcionesSalida = () => {
     switch (entrada) {
-      case "entradaUno":
+      case "entradaUno8":
         return (
           <>
-            <option value="horaUno">6:00pm</option>
-            <option value="horaDos">6:40pm</option>
+            <option value="horaUno8_00am">8:00am</option>
+            <option value="horaDos8_50">8:50am</option>
           </>
         );
-      case "entradaDos":
+      case "entradaDos8_50":
         return (
           <>
-            <option value="horaTres">6:40pm</option>
-            <option value="horaCuatro">7:20pm</option>
+            <option value="horaUno8_50">8:50am</option>
+            <option value="horaDos9_40">9:40am</option>
           </>
         );
-      case "entradaTres":
+      case "entradaTres9_40":
         return (
           <>
-            <option value="horaCinco">7:20pm</option>
-            <option value="horaSeis">8:00pm</option>
+            <option value="horaUno9_40">9:40am</option>
+            <option value="horaDos10_30">10:30am</option>
           </>
         );
-      case "entradaCuatro":
+      case "entradaCuatro11_00":
         return (
           <>
-            <option value="horaSiete">8:00pm</option>
-            <option value="horaOcho">8:40pm</option>
+            <option value="horaUno11_00">11:00am</option>
+            <option value="horaDos11_50">11:50am</option>
           </>
         );
-      case "entradaCinco":
+      case "entradaCinco11_50":
         return (
           <>
-            <option value="horaNueve">8:40pm</option>
-            <option value="horaDiez">9:20pm</option>
+            <option value="horaUno11_50">11:50am</option>
+            <option value="horaDos12_40">12:40pm</option>
           </>
         );
-      case "entradaSeis":
+      case "entradaSeis12_40":
         return (
           <>
-            <option value="horaOnce">9:20pm</option>
-            <option value="horaDoce">10:00pm</option>
+            <option value="horaUno12_40">12:40pm</option>
+            <option value="horaDos13_30">13:30pm</option>
+          </>
+        );
+      case "entradaUno6":
+        return (
+          <>
+            <option value="horaUno6_00">6:00pm</option>
+            <option value="horaDos6_40">6:40pm</option>
+          </>
+        );
+      case "entradaDos6_40":
+        return (
+          <>
+            <option value="horaUno6_40">6:40pm</option>
+            <option value="horaDos7_20">7:20pm</option>
+          </>
+        );
+      case "entradaTres7_20":
+        return (
+          <>
+            <option value="horaUno7_20">7:20pm</option>
+            <option value="horaDos8_00">8:00pm</option>
+          </>
+        );
+      case "entradaCuatro8_00":
+        return (
+          <>
+            <option value="horaUno8_00pm">8:00pm</option>
+            <option value="horaDos8_40">8:40pm</option>
+          </>
+        );
+      case "entradaCinco8_40":
+        return (
+          <>
+            <option value="horaUno8_40">8:40pm</option>
+            <option value="horaDos9_20">9:20pm</option>
+          </>
+        );
+      case "entradaSeis9_20":
+        return (
+          <>
+            <option value="horaUno9_20">9:20pm</option>
+            <option value="horaDos10_00">10:00pm</option>
           </>
         );
       default:
@@ -118,12 +160,18 @@ const FormMaestro = () => {
               onChange={(e) => setEntrada(e.target.value)}
             >
               <option value="">-- Seleccione una acción --</option>
-              <option value="entradaUno">6:00pm / 6:40pm</option>
-              <option value="entradaDos">6:40pm / 7:20pm</option>
-              <option value="entradaTres">7:20pm / 8:00pm</option>
-              <option value="entradaCuatro">8:00pm / 8:40pm</option>
-              <option value="entradaCinco">8:40pm / 9:20pm</option>
-              <option value="entradaSeis">9:20pm / 10:00pm</option>
+              <option value="entradaUno8">8:00am / 8:50am</option>
+              <option value="entradaDos8_50">8:50am / 9:40am</option>
+              <option value="entradaTres9_40">9:40am / 10:30am</option>
+              <option value="entradaCuatro11_00">11:00am / 11:50am</option>
+              <option value="entradaCinco11_50">11:50am / 12:40pm</option>
+              <option value="entradaSeis12_40">12:40pm / 13:30pm</option>
+              <option value="entradaUno6">6:00pm / 6:40pm</option>
+              <option value="entradaDos6_40">6:40pm / 7:20pm</option>
+              <option value="entradaTres7_20">7:20pm / 8:00pm</option>
+              <option value="entradaCuatro8_00">8:00pm / 8:40pm</option>
+              <option value="entradaCinco8_40">8:40pm / 9:20pm</option>
+              <option value="entradaSeis9_20">9:20pm / 10:00pm</option>
             </select>
             <label className="text-start mb-2 text-white">
               Elige una acción:

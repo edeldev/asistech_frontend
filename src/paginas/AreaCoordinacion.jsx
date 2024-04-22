@@ -149,12 +149,30 @@ const AreaCoordinacion = () => {
 
     // Comprobar solo las horas de entrada
     const horasEntrada = [
-      asistencia.horaUno,
-      asistencia.horaTres,
-      asistencia.horaCinco,
-      asistencia.horaSiete,
-      asistencia.horaNueve,
-      asistencia.horaOnce,
+      asistencia.horaUno8_00am,
+      asistencia.horaDos8_50,
+      asistencia.horaUno8_50,
+      asistencia.horaDos9_40,
+      asistencia.horaUno9_40,
+      asistencia.horaDos10_30,
+      asistencia.horaUno11_00,
+      asistencia.horaDos11_50,
+      asistencia.horaUno11_50,
+      asistencia.horaDos12_40,
+      asistencia.horaUno12_40,
+      asistencia.horaDos13_30,
+      asistencia.horaUno6_00,
+      asistencia.horaDos6_40,
+      asistencia.horaUno6_40,
+      asistencia.horaDos7_20,
+      asistencia.horaUno7_20,
+      asistencia.horaDos8_00,
+      asistencia.horaUno8_00pm,
+      asistencia.horaDos8_40,
+      asistencia.horaUno8_40,
+      asistencia.horaDos9_20,
+      asistencia.horaUno9_20,
+      asistencia.horaDos10_00,
     ];
 
     // Contar las horas de entrada
@@ -178,18 +196,30 @@ const AreaCoordinacion = () => {
       ]);
       data.push([
         "Fecha",
-        "Primer Entrada",
-        "Primer Salida",
-        "Segunda Entrada",
-        "Segunda Salida",
-        "Tercer Entrada",
-        "Tercer Salida",
-        "Cuarta Entrada",
-        "Cuarta Salida",
-        "Quinta Entrada",
-        "Quinta Salida",
-        "Sexta Entrada",
-        "Sexta Salida",
+        "Primer Entrada: 8:00am",
+        "Primer Salida: 8:50am",
+        "Segunda Entrada: 8:50am",
+        "Segunda Salida: 9:40am",
+        "Tercer Entrada: 9:40am",
+        "Tercer Salida: 10:30am",
+        "Cuarta Entrada: 11:00am",
+        "Cuarta Salida: 11:50am",
+        "Quinta Entrada: 11:50am",
+        "Quinta Salida: 12:40pm",
+        "Sexta Entrada: 12:40pm",
+        "Sexta Salida: 13:30pm",
+        "Primer Entrada: 6:00pm",
+        "Primer Salida: 6:40pm",
+        "Segunda Entrada: 6:40pm",
+        "Segunda Salida: 7:20pm",
+        "Tercer Entrada: 7:20pm",
+        "Tercer Salida: 8:00pm",
+        "Cuarta Entrada: 8:00pm",
+        "Cuarta Salida: 8:40pm",
+        "Quinta Entrada: 8:40pm",
+        "Quinta Salida: 9:20pm",
+        "Sexta Entrada: 9:20pm",
+        "Sexta Salida: 10:00pm",
       ]);
       asistenciasPorNombre[nombre].forEach((asistencia) => {
         data.push([
@@ -198,18 +228,30 @@ const AreaCoordinacion = () => {
           }, ${asistencia.fecha} ${
             asistencia.tipoAsistencia === "enLinea" ? "En Línea" : "Presencial"
           }`,
-          asistencia.horaUno,
-          asistencia.horaDos,
-          asistencia.horaTres,
-          asistencia.horaCuatro,
-          asistencia.horaCinco,
-          asistencia.horaSeis,
-          asistencia.horaSiete,
-          asistencia.horaOcho,
-          asistencia.horaNueve,
-          asistencia.horaDiez,
-          asistencia.horaOnce,
-          asistencia.horaDoce,
+          asistencia.horaUno8_00am,
+          asistencia.horaDos8_50,
+          asistencia.horaUno8_50,
+          asistencia.horaDos9_40,
+          asistencia.horaUno9_40,
+          asistencia.horaDos10_30,
+          asistencia.horaUno11_00,
+          asistencia.horaDos11_50,
+          asistencia.horaUno11_50,
+          asistencia.horaDos12_40,
+          asistencia.horaUno12_40,
+          asistencia.horaDos13_30,
+          asistencia.horaUno6_00,
+          asistencia.horaDos6_40,
+          asistencia.horaUno6_40,
+          asistencia.horaDos7_20,
+          asistencia.horaUno7_20,
+          asistencia.horaDos8_00,
+          asistencia.horaUno8_00pm,
+          asistencia.horaDos8_40,
+          asistencia.horaUno8_40,
+          asistencia.horaDos9_20,
+          asistencia.horaUno9_20,
+          asistencia.horaDos10_00,
         ]);
       });
       data.push([]);
@@ -287,18 +329,30 @@ const AreaCoordinacion = () => {
                           <thead>
                             <tr>
                               <th>Fecha</th>
-                              <th>Primer Entrada</th>
-                              <th>Primer Salida</th>
-                              <th>Segunda Entrada</th>
-                              <th>Segunda Salida</th>
-                              <th>Tercer Entrada</th>
-                              <th>Tercer Salida</th>
-                              <th>Cuarta Entrada</th>
-                              <th>Cuarta Salida</th>
-                              <th>Quinta Entrada</th>
-                              <th>Quinta Salida</th>
-                              <th>Sexta Entrada</th>
-                              <th>Sexta Salida</th>
+                              <th>Entrada: 8:00am</th>
+                              <th>Salida: 8:50am</th>
+                              <th>Entrada: 8:50am</th>
+                              <th>Salida: 9:40am</th>
+                              <th>Entrada: 9:40am</th>
+                              <th>Salida: 10:30am</th>
+                              <th>Entrada: 11:00am</th>
+                              <th>Salida: 11:50am</th>
+                              <th>Entrada: 11:50am</th>
+                              <th>Salida: 12:40pm</th>
+                              <th>Entrada: 12:40pm</th>
+                              <th>Salida: 13:30pm</th>
+                              <th>Entrada: 6:00pm</th>
+                              <th>Salida: 6:40pm</th>
+                              <th>Entrada: 6:40pm</th>
+                              <th>Salida: 7:20pm</th>
+                              <th>Entrada: 7:20pm</th>
+                              <th>Salida: 8:00pm</th>
+                              <th>Entrada: 8:00pm</th>
+                              <th>Salida: 8:40pm</th>
+                              <th>Entrada: 8:40pm</th>
+                              <th>Salida: 9:20pm</th>
+                              <th>Entrada: 9:20pm</th>
+                              <th>Salida: 10:00pm</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -309,6 +363,7 @@ const AreaCoordinacion = () => {
                                     {`${Capitalize(asistencia.dia)} ${
                                       asistencia.fecha
                                     }`}{" "}
+                                    <br />
                                     <span
                                       className={
                                         asistencia.tipoAsistencia === "enLinea"
@@ -321,18 +376,30 @@ const AreaCoordinacion = () => {
                                         : "Presencial"}
                                     </span>
                                   </td>
-                                  <td>{asistencia.horaUno}</td>
-                                  <td>{asistencia.horaDos}</td>
-                                  <td>{asistencia.horaTres}</td>
-                                  <td>{asistencia.horaCuatro}</td>
-                                  <td>{asistencia.horaCinco}</td>
-                                  <td>{asistencia.horaSeis}</td>
-                                  <td>{asistencia.horaSiete}</td>
-                                  <td>{asistencia.horaOcho}</td>
-                                  <td>{asistencia.horaNueve}</td>
-                                  <td>{asistencia.horaDiez}</td>
-                                  <td>{asistencia.horaOnce}</td>
-                                  <td>{asistencia.horaDoce}</td>
+                                  <td>{asistencia.horaUno8_00am}</td>
+                                  <td>{asistencia.horaDos8_50}</td>
+                                  <td>{asistencia.horaUno8_50}</td>
+                                  <td>{asistencia.horaDos9_40}</td>
+                                  <td>{asistencia.horaUno9_40}</td>
+                                  <td>{asistencia.horaDos10_30}</td>
+                                  <td>{asistencia.horaUno11_00}</td>
+                                  <td>{asistencia.horaDos11_50}</td>
+                                  <td>{asistencia.horaUno11_50}</td>
+                                  <td>{asistencia.horaDos12_40}</td>
+                                  <td>{asistencia.horaUno12_40}</td>
+                                  <td>{asistencia.horaDos13_30}</td>
+                                  <td>{asistencia.horaUno6_00}</td>
+                                  <td>{asistencia.horaDos6_40}</td>
+                                  <td>{asistencia.horaUno6_40}</td>
+                                  <td>{asistencia.horaDos7_20}</td>
+                                  <td>{asistencia.horaUno7_20}</td>
+                                  <td>{asistencia.horaDos8_00}</td>
+                                  <td>{asistencia.horaUno8_00pm}</td>
+                                  <td>{asistencia.horaDos8_40}</td>
+                                  <td>{asistencia.horaUno8_40}</td>
+                                  <td>{asistencia.horaDos9_20}</td>
+                                  <td>{asistencia.horaUno9_20}</td>
+                                  <td>{asistencia.horaDos10_00}</td>
                                 </tr>
                               )
                             )}
@@ -397,18 +464,30 @@ const AreaCoordinacion = () => {
                           <thead>
                             <tr>
                               <th>Fecha</th>
-                              <th>Primer Entrada</th>
-                              <th>Primer Salida</th>
-                              <th>Segunda Entrada</th>
-                              <th>Segunda Salida</th>
-                              <th>Tercer Entrada</th>
-                              <th>Tercer Salida</th>
-                              <th>Cuarta Entrada</th>
-                              <th>Cuarta Salida</th>
-                              <th>Quinta Entrada</th>
-                              <th>Quinta Salida</th>
-                              <th>Sexta Entrada</th>
-                              <th>Sexta Salida</th>
+                              <th>Entrada: 8:00am</th>
+                              <th>Salida: 8:50am</th>
+                              <th>Entrada: 8:50am</th>
+                              <th>Salida: 9:40am</th>
+                              <th>Entrada: 9:40am</th>
+                              <th>Salida: 10:30am</th>
+                              <th>Entrada: 11:00am</th>
+                              <th>Salida: 11:50am</th>
+                              <th>Entrada: 11:50am</th>
+                              <th>Salida: 12:40pm</th>
+                              <th>Entrada: 12:40pm</th>
+                              <th>Salida: 13:30pm</th>
+                              <th>Entrada: 6:00pm</th>
+                              <th>Salida: 6:40pm</th>
+                              <th>Entrada: 6:40pm</th>
+                              <th>Salida: 7:20pm</th>
+                              <th>Entrada: 7:20pm</th>
+                              <th>Salida: 8:00pm</th>
+                              <th>Entrada: 8:00pm</th>
+                              <th>Salida: 8:40pm</th>
+                              <th>Entrada: 8:40pm</th>
+                              <th>Salida: 9:20pm</th>
+                              <th>Entrada: 9:20pm</th>
+                              <th>Salida: 10:00pm</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -417,7 +496,8 @@ const AreaCoordinacion = () => {
                                 <td>
                                   {`${Capitalize(asistencia.dia)} ${
                                     asistencia.fecha
-                                  }`}{" "}
+                                  }`}
+                                  <br />
                                   <span
                                     className={
                                       asistencia.tipoAsistencia === "enLinea"
@@ -430,18 +510,30 @@ const AreaCoordinacion = () => {
                                       : "Presencial"}
                                   </span>
                                 </td>
-                                <td>{asistencia.horaUno}</td>
-                                <td>{asistencia.horaDos}</td>
-                                <td>{asistencia.horaTres}</td>
-                                <td>{asistencia.horaCuatro}</td>
-                                <td>{asistencia.horaCinco}</td>
-                                <td>{asistencia.horaSeis}</td>
-                                <td>{asistencia.horaSiete}</td>
-                                <td>{asistencia.horaOcho}</td>
-                                <td>{asistencia.horaNueve}</td>
-                                <td>{asistencia.horaDiez}</td>
-                                <td>{asistencia.horaOnce}</td>
-                                <td>{asistencia.horaDoce}</td>
+                                <td>{asistencia.horaUno8_00am}</td>
+                                <td>{asistencia.horaDos8_50}</td>
+                                <td>{asistencia.horaUno8_50}</td>
+                                <td>{asistencia.horaDos9_40}</td>
+                                <td>{asistencia.horaUno9_40}</td>
+                                <td>{asistencia.horaDos10_30}</td>
+                                <td>{asistencia.horaUno11_00}</td>
+                                <td>{asistencia.horaDos11_50}</td>
+                                <td>{asistencia.horaUno11_50}</td>
+                                <td>{asistencia.horaDos12_40}</td>
+                                <td>{asistencia.horaUno12_40}</td>
+                                <td>{asistencia.horaDos13_30}</td>
+                                <td>{asistencia.horaUno6_00}</td>
+                                <td>{asistencia.horaDos6_40}</td>
+                                <td>{asistencia.horaUno6_40}</td>
+                                <td>{asistencia.horaDos7_20}</td>
+                                <td>{asistencia.horaUno7_20}</td>
+                                <td>{asistencia.horaDos8_00}</td>
+                                <td>{asistencia.horaUno8_00pm}</td>
+                                <td>{asistencia.horaDos8_40}</td>
+                                <td>{asistencia.horaUno8_40}</td>
+                                <td>{asistencia.horaDos9_20}</td>
+                                <td>{asistencia.horaUno9_20}</td>
+                                <td>{asistencia.horaDos10_00}</td>
                               </tr>
                             ))}
                           </tbody>
